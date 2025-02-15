@@ -23,4 +23,25 @@ public class TaskManager {
     public static List<Task> getTaskList() {
         return taskList;
     }
+
+    public static Task getTask(Long id) {
+        return taskList.stream().filter(task -> task.getId()==id).findAny().orElse(null);
+    }
+    public static void addTask(Task task){
+        task.setId(id);
+        taskList.add(task);
+        id++;
+    }
+
+    public static void saveTask(Task task){
+        for (int i = 0; i < taskList.size(); i++) {
+            if(taskList.get(i).getId() == task.getId()) {
+                taskList.set(i, task);
+            }
+        }
+    }
+
+    public static void deleteTask(Long id) {
+        taskList.remove(TaskManager.getTask(id));
+    }
 }
