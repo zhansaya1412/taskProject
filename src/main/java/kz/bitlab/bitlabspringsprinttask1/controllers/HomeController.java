@@ -15,7 +15,10 @@ public class HomeController {
     }
 
 
-    public String 
+    @GetMapping("/addstudent")
+    public String addStudentPage(){
+        return "addstudent";
+    }
 
     @PostMapping("/addstudent")
     public String addStudent(){
