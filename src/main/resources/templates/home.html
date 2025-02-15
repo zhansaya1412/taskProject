@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layouts/main.html"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+</head>
+<body>
+<div layout:fragment="firstFragment">
+   <div class="col-12">
+       <div class="mb-3">
+           <label for="exampleFormControlInput1" class="form-label">Email address</label>
+           <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+       </div>
+       <div class="mb-3">
+           <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+       </div>
+   </div>
+</div>
+<div layout:fragment="secondFragment">
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="width: 100%">
+                <img src="https://avatars.mds.yandex.net/i?id=dfe12e9869f7b981546ad2fbf8f5bbec1ada60ca-9223201-images-thumbs&n=13" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" style="width: 100%">
+                <img src="https://avatars.mds.yandex.net/i?id=1b8e0e70d61637c540f4f74748bba9fe24c7c2a2-5241344-images-thumbs&n=13" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" style="width: 100%">
+                <img src="https://avatars.mds.yandex.net/i?id=dfe12e9869f7b981546ad2fbf8f5bbec1ada60ca-9223201-images-thumbs&n=14" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+<script type="text/javascript" href="/js/bootstrap.bundle.js"></script>
+</body>
+</html>
