@@ -31,6 +31,7 @@ public class TaskController {
         Task task = Task.builder()
                 .id(id)
                 .name(taskname)
+                .description(description)
                 .deadlineDate(date)
                 .isCompleted(Boolean.parseBoolean(complete))
                 .build();
@@ -44,5 +45,23 @@ public class TaskController {
         TaskManager.deleteTask(id);
         return "redirect:/tasks";
     }
+
+    @PostMapping("/addTask")
+    public String addTask(@RequestParam(name = "taskName") String taskName,
+                          @RequestParam(name= "taskDescription") String taskDescription,
+                          @RequestParam(name = "date") String date,
+                          @RequestParam(name = "complete", defaultValue = "false") String complete) {
+
+        Task task = Task.builder()
+                .name(taskName)
+                .description(taskDescription)
+                .deadlineDate(date)
+                .isCompleted(Boolean.parseBoolean(complete))
+                .build();
+
+        TaskManager.addTask(task);
+        return "redirect:/tasks";
+    }
+
 
 }

@@ -39,10 +39,13 @@ layout:decorate="layouts/taskLayout.html">
         <input class="form-control" type="hidden" name="id" th:value="${task.getId()}">
         <label class="form-label">TASK NAME:</label>
         <input class="form-control" type="text" name="taskName" th:value="${task.getName()}">
+        <br>
         <label class="form-label">TASK DESCRIPTION:</label>
         <input class="form-control" type="text" name="description" th:value="${task.getName()}">
+        <br>
         <label class="form-label">DEADLINE DATE:</label>
         <input class="form-control" type="date" name="date" th:value="${task.getDeadlineDate()}">
+        <br>
         <label class="form-label">COMPLETED:</label>
         <select class="form-select" name="complete">
             <option th:selected="${task.isCompleted()}" th:text="YES" value="true"></option>
@@ -51,6 +54,7 @@ layout:decorate="layouts/taskLayout.html">
         <br>
         <button class="btn btn-success" type="submit">SAVE</button>
     </form>
+    <br>
     <form th:action="@{'/deleteTask'}" method="post">
         <input type="hidden" name="_method" value="DELETE">
         <input class="form-control" type="hidden" name="id" th:value="${task.getId()}">
