@@ -2,17 +2,10 @@ package com.example.thirdProject.Controllers;
 
 import com.example.thirdProject.db.TaskManager;
 import com.example.thirdProject.db.Tasks;
-<<<<<<< HEAD
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-=======
 import org.springframework.scheduling.config.Task;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
->>>>>>> 5f9dcbd (Added functions add,save,delete)
 
 @Controller
 public class TaskController {
@@ -21,14 +14,6 @@ public class TaskController {
         model.addAttribute("tasks", TaskManager.getTaskList());
         return "tasks";
     }
-<<<<<<< HEAD
-    @GetMapping("/details/{idishka}")
-    public String getTasks(Model model,
-                           @PathVariable("idishka") Long id){
-        model.addAttribute("task",TaskManager.getTask(id));
-        return "details";
-    }
-=======
     @GetMapping("/details/{idshka}")
     public String getDetailsOfTasks(Model model,
                            @PathVariable("idshka") Long id){
@@ -81,5 +66,4 @@ public class TaskController {
         TaskManager.deleteTask(id);
         return "redirect:/tasks";
     }
->>>>>>> 5f9dcbd (Added functions add,save,delete)
 }
