@@ -9,7 +9,45 @@ layout:decorate="layouts/taskLayout.html">
 </head>
 <body>
 <div layout:fragment="thirdFragment">
-    <button class="btn btn-primary"> + Add New Task</button>
+    <h2 th:text="${text}"></h2>
+    <h2 th:text="${someBean}"></h2>
+    <h2 th:text="${exampleBean1}"></h2>
+    <h2 th:text="${exampleBean2}"></h2>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTaskModal">+ Add New Task</button>
+    <div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addTaskModalLabel">Add New Task</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/addTask" method="post">
+                        <div class="mb-3">
+                            <label for="taskName" class="form-label">Task Name</label>
+                            <input type="text" class="form-control" id="taskName" name="taskName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="taskDescription" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="taskDescription" name="taskDescription" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Deadline Date</label>
+                            <input type="date" class="form-control" id="date" name="date" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Completed</label>
+                            <select class="form-select" name="complete">
+                                <option value="false">No</option>
+                                <option value="true">Yes</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success">Add Task</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div layout:fragment="firstFragment">
     <div class="col-12">
@@ -28,6 +66,7 @@ layout:decorate="layouts/taskLayout.html">
         <tr>
             <td>ID</td>
             <td>NAME</td>
+            <td>DESCRIPTION</td>
             <td>DEADLINE DATE</td>
             <td>IS COMPLETED</td>
             <td>DETAILS</td>
@@ -35,6 +74,7 @@ layout:decorate="layouts/taskLayout.html">
         <tr th:each="task: ${tasks}">
             <td th:text="${task.getId()}"></td>
             <td th:text="${task.getName()}"></td>
+            <td th:text="${task.getDescription()}"></td>
             <td th:text="${task.getDeadlineDate()}"></td>
             <td th:if="${task.isCompleted()}" th:text="YES"></td>
             <td th:unless="${task.isCompleted()}" th:text="NO"></td>

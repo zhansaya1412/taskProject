@@ -1,7 +1,9 @@
 package kz.bitlab.techorda2025.thirdProject.controllers;
 
+import kz.bitlab.techorda2025.thirdProject.beans.TestBean;
 import kz.bitlab.techorda2025.thirdProject.db.Task;
 import kz.bitlab.techorda2025.thirdProject.db.TaskManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -9,8 +11,12 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class TaskController {
 
+//    @Autowired
+//    TestBean testBean;
+
     @GetMapping("/tasks")
     public String getTasks(Model model) {
+        System.out.println("tesBEan 3:" + new TestBean());
         model.addAttribute("tasks", TaskManager.getTaskList());
         return "tasks";
     }

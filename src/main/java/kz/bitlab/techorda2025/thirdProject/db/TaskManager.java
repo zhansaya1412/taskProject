@@ -18,6 +18,10 @@ public class TaskManager {
         taskList.add(new Task(4L, "Complete all home tasks", "2025-02-20", false));
 
         taskList.add(new Task(5L, "Create a new brach with your changes", "2025-02-18", false));
+
+        Task task = new Task(6L, "name1", "2025-02-18", false);
+        System.out.println("Initializing task");
+        taskList.add(task);
     }
 
     public static List<Task> getTaskList() {
@@ -44,4 +48,6 @@ public class TaskManager {
     public static void deleteTask(Long id) {
         taskList.remove(TaskManager.getTask(id));
     }
+
+
 }
