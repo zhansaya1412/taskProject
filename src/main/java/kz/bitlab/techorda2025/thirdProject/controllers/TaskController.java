@@ -14,6 +14,29 @@ public class TaskController {
         model.addAttribute("tasks", TaskManager.getTaskList());
         return "tasks";
     }
+    @GetMapping("/addTask")
+    public String showAddTaskForm(Model model) {
+        return "addTask";
+    }
+
+    @PostMapping("/addTask")
+    public String addTask(@RequestParam(name = "taskName") String taskname,
+                          @RequestParam(name = "description") String description,
+                          @RequestParam(name = "date") String date,
+                          @RequestParam(name = "complete") String complete) {
+
+        Task task = Task.builder()
+                .name(taskname)
+                .description(description)
+                .deadlineDate(date)
+                .isCompleted(Boolean.parseBoolean(complete))
+                .build();
+
+        TaskManager.addTask(task);
+
+        return "redirect:/tasks";
+    }
+
     @GetMapping("/details/{idshka}")
     public String getDetailsOfTask(Model model,
                            @PathVariable("idshka") Long id) {
@@ -31,6 +54,7 @@ public class TaskController {
         Task task = Task.builder()
                 .id(id)
                 .name(taskname)
+                .description(description)
                 .deadlineDate(date)
                 .isCompleted(Boolean.parseBoolean(complete))
                 .build();

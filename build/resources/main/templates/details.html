@@ -40,7 +40,7 @@ layout:decorate="layouts/taskLayout.html">
         <label class="form-label">TASK NAME:</label>
         <input class="form-control" type="text" name="taskName" th:value="${task.getName()}">
         <label class="form-label">TASK DESCRIPTION:</label>
-        <input class="form-control" type="text" name="description" th:value="${task.getName()}">
+        <input class="form-control" type="text" name="description" th:value="${task.getDescription()}">
         <label class="form-label">DEADLINE DATE:</label>
         <input class="form-control" type="date" name="date" th:value="${task.getDeadlineDate()}">
         <label class="form-label">COMPLETED:</label>
