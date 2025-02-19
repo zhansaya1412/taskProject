@@ -9,7 +9,38 @@ layout:decorate="layouts/taskLayout.html">
 </head>
 <body>
 <div layout:fragment="thirdFragment">
-    <button class="btn btn-primary"> + Add New Task</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
+         + Add New Task
+    </button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">New Task</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{'/addTask'}" method="post">
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">TASK NAME:</label>
+                            <input type="text" class="form-control" id="recipient-name" name="taskName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">TASK DESCRIPTION:</label>
+                            <textarea class="form-control" id="message-text" name="description"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="date" class="col-form-label">TASK DEADLINE DATE:</label>
+                            <input type="date" class="form-control" id="date" name="date">
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" type="submit">Добавить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div layout:fragment="firstFragment">
     <div class="col-12">

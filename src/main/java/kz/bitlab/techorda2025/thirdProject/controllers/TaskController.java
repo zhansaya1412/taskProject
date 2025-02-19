@@ -45,4 +45,18 @@ public class TaskController {
         return "redirect:/tasks";
     }
 
+    @PostMapping(value = "/addTask")
+    public String addTask(@RequestParam(name = "taskName") String name,
+                          @RequestParam(name = "description") String description,
+                          @RequestParam(name = "date") String date) {
+
+        Task task = Task.builder()
+                .name(name)
+                .description(description)
+                .deadlineDate(date)
+                .build();
+
+        TaskManager.addTask(task);
+        return "redirect:/tasks";
+    }
 }
