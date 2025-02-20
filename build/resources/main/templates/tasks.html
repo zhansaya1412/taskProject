@@ -11,6 +11,12 @@ layout:decorate="layouts/taskLayout.html">
 <div layout:fragment="thirdFragment">
     <a href="/addTask" class="btn btn-primary"> + Add New Task</a>
 </div>
+<div layout:fragment="fourthFragment">
+    <form class="d-flex" role="search" th:action="@{'/search'}" method="post">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchValue">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+</div>
 <div layout:fragment="firstFragment">
     <div class="col-12">
         <div class="mb-3">
