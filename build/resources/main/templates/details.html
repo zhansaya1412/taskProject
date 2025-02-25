@@ -35,6 +35,25 @@ layout:decorate="layouts/taskLayout.html">
     </div>
 </div>
 <div layout:fragment="secondFragment">
+    <div class="row">
+        <form th:action="@{'/addCat'}" method="post">
+            <input class="form-control" type="hidden" name="taskId" th:value="${task.getId()}">
+            <div class="col-2" th:each="category: ${categories}">
+                <button class="btn btn-primary btn-sm" type="submit" th:text="'+' + ${category.getName()}"></button>
+                <input class="form-control" type="hidden" name="catId" th:value="${category.getId()}">
+            </div>
+        </form>
+    </div>
+
+    <form th:action="@{'/deleteCat'}" method="post">
+        <div class="row mt-2">
+            <input class="form-control" type="hidden" name="taskId" th:value="${task.getId()}">
+            <div class="col-2" th:each="cat: ${task.getCategories()}">
+                <button class="btn btn-warning btn-sm" type="submit" th:text="'-' + ${cat.getName()}"></button>
+                <input class="form-control" type="hidden" name="catId" th:value="${cat.getId()}">
+            </div>
+        </div>
+    </form>
     <form th:action="@{'/saveTask'}" method="post">
         <input class="form-control" type="hidden" name="id" th:value="${task.getId()}">
         <label class="form-label">TASK NAME:</label>

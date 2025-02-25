@@ -8,20 +8,99 @@ layout:decorate="layouts/taskLayout.html">
     <link href="/css/bootstrap.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-<div layout:fragment="thirdFragment">
-    <button class="btn btn-primary"> + Add New Task</button>
+<div layout:fragment="fourthFragment">
+<form class="d-flex" role="search" th:action="@{'/search'}" method="post">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchValue">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
 </div>
-<div layout:fragment="firstFragment">
-    <div class="col-12">
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-        </div>
-        <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+<div layout:fragment="thirdFragment">
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTaskModal">+ Add New Task</button>
+    <div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addTaskModalLabel">Add New Task</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{'/addTask'}" method="post">
+                        <div class="mb-3">
+                            <label for="taskName" class="form-label">Task Name</label>
+                            <input type="text" class="form-control" id="taskName" name="taskName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Deadline Date</label>
+                            <input type="date" class="form-control" id="date" name="date" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Completed</label>
+                            <select class="form-select" name="complete">
+                                <option value="false">No</option>
+                                <option value="true">Yes</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success">Add Task</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
+</div>
+<div layout:fragment="firstFragment">
+   <div th:if="${regis != null}">
+       <div class="col-12">
+           <form th:action="@{'/register'}" method="post">
+               <div class="mb-3">
+                   <label for="exampleFormControlInput2" class="form-label">Email address</label>
+                   <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com"
+                          name="email">
+               </div>
+               <div class="mb-3">
+                   <label for="exampleFormControlTextarea1" class="form-label">Fullname</label>
+                   <input class="form-control" id="exampleFormControlTextarea1" rows="3" name="fullName">
+               </div>
+               <div class="mb-3">
+                   <label class="form-label">Password</label>
+                   <input class="form-control" rows="3" name="password" type="password">
+               </div>
+               <div class="mb-3">
+                   <button type="submit" class="btn btn-success">Register</button>
+               </div>
+           </form>
+       </div>
+<!--       <form th:action="@{'/login'}" method="get">-->
+<!--           <input type="hidden" name="regis" value="1">-->
+<!--           <button type="submit" class="btn btn-success">Login</button>-->
+<!--       </form>-->
+       <a href="/tasks">Login</a>
+   </div>
+    <div th:unless="${regis != null}">
+        <div class="col-12">
+            <form th:action="@{'/login'}" method="post">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
+                           name="email">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input class="form-control" rows="3" name="password" type="password">
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-success">Login</button>
+                </div>
+            </form>
+        </div>
+
+<!--        <form th:action="@{'/register'}" method="get">-->
+<!--            <input type="hidden" name="regis" value="regis">-->
+<!--            <button type="submit" class="btn btn-success">Register</button>-->
+<!--        </form>-->
+
+        <a href="/tasks?regis">Register</a>
+    </div>
+
 </div>
 <div layout:fragment="secondFragment">
     <table class="table table-striped">
