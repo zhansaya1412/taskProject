@@ -1,3 +1,4 @@
+/*
 package kz.bitlab.techorda2025.thirdProject.repositories;
 
 import jakarta.transaction.Transactional;
@@ -14,3 +15,4 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     List<Task> findAllBy();
     List<Task> findAllByNameContainsIgnoreCase(String name);
 }
+*/

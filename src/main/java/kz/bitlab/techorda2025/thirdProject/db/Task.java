@@ -1,3 +1,4 @@
+/*
 package kz.bitlab.techorda2025.thirdProject.db;
 
 import jakarta.persistence.*;
@@ -30,3 +31,4 @@ public class Task {
 
     private boolean isCompleted;
 }
+*/

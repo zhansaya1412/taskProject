@@ -1,3 +1,4 @@
+/*
 package kz.bitlab.techorda2025.thirdProject.db;
 
 import java.util.ArrayList;
@@ -45,3 +46,4 @@ public class TaskManager {
         taskList.remove(TaskManager.getTask(id));
     }
 }
+*/

@@ -1,7 +1,7 @@
+/*
 package kz.bitlab.techorda2025.thirdProject.controllers;
 
 import kz.bitlab.techorda2025.thirdProject.db.Task;
-import kz.bitlab.techorda2025.thirdProject.db.TaskManager;
 import kz.bitlab.techorda2025.thirdProject.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -92,3 +92,4 @@ public class TaskController {
         return "tasks";
     }
 }
+*/
