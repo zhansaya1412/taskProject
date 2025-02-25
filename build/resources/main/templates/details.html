@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-layout:decorate="layouts/taskLayout.html">
+      layout:decorate="layouts/taskLayout.html">
 <head>
     <meta charset="UTF-8">
-    <title>Tasks</title>
+    <title>Details</title>
     <link href="/css/bootstrap.css" type="text/css" rel="stylesheet">
 </head>
-<body>
+<body th:if="${session.currentUser != null}">
 <div layout:fragment="thirdFragment">
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
         + Add New Task

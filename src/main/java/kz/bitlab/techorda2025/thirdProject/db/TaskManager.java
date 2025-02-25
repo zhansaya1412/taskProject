@@ -44,4 +44,22 @@ public class TaskManager {
     public static void deleteTask(Long id) {
         taskList.remove(TaskManager.getTask(id));
     }
+
+
+    private static List<Users> userList = new ArrayList<>();
+    static {
+        userList.add(new Users(1L, "user@gmail.com", "User Userov", "12345678"));
+        userList.add(new Users(2L, "human@gmail.com", "Human Humanov", "87654321"));
+    }
+
+    public static Users getUser(String email) {
+        return userList.stream().filter(user -> user.getEmail().equals(email)).findAny().orElse(null);
+    }
+
+    private static Long idUser = 3L;
+    public static void addUser(Users user) {
+        user.setId(idUser);
+        userList.add(user);
+        idUser++;
+    }
 }

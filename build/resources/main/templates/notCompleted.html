@@ -73,11 +73,10 @@
             <td>IS COMPLETED</td>
             <td>DETAILS</td>
         </tr>
-        <tr th:each="task: ${tasks}" th:if="${session.currentUser != null}">
+        <tr th:each="task: ${tasks}" th:if="${session.currentUser != null && !task.isCompleted()}">
             <td th:text="${task.getId()}"></td>
             <td th:text="${task.getName()}"></td>
             <td th:text="${task.getDeadlineDate()}"></td>
-            <td th:if="${task.isCompleted()}" th:text="YES"></td>
             <td th:unless="${task.isCompleted()}" th:text="NO"></td>
             <td> <a th:href="@{'/details/' + ${task.getId()}}">Details</a></td>
         </tr>
