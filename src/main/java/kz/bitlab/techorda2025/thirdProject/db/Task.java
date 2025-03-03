@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class Task {
     private Long id;
     private String name;
+    private String description;
     private String deadlineDate;
     private boolean isCompleted;
 }

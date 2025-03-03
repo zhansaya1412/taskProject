@@ -40,8 +40,9 @@ layout:decorate="/layouts/taskLayout.html">
                 <td th:text="${task.getId()}"></td>
                 <td th:text="${task.getName()}"></td>
                 <td th:text="${task.getDeadlineDate()}"></td>
-                <td th:text="${task.isCompleted()}"></td>
-                <td><a th:href="@{'/details' + ${task.getId()}}">DETAILS</a></td>
+                <td th:if="${task.isCompleted()}" th:text="YES"></td>
+                <td th:unless="${task.isCompleted()}" th:text="NO"></td>
+                <td><a th:href="@{'/details/' + ${task.getId()}}">DETAILS</a></td>
             </tr>
         </tbody>
     </table>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="/layouts/taskLayout.html">
+<head>
+    <meta charset="UTF-8">
+    <title>All Tasks</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+</head>
+<body>
+<div layout:fragment="thirdFragment">
+    <button class="btn btn-primary">+ Add New Task</button>
+</div>
+<div layout:fragment="firstFragment">
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="width: 100%;">
+                <img src="https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+<div layout:fragment="secondFragment">
+    <form th:action="@{'/saveTask'}" method="post">
+        <input type="hidden" th:value="${task.getId()}" name="taskId">
+        <label class="form-label">TASK NAME:</label>
+        <input class="form-control" type="text" name="taskName" th:value="${task.getName()}">
+        <label class="form-label">TASK DESCRIPTION:</label>
+        <input class="form-control" type="text" name="taskDescription" th:value="${task.getDescription()}">
+        <label class="form-label">DEADLINE DATE:</label>
+        <input class="form-control" type="date" name="task_deadline" th:value="${task.getDeadlineDate()}">
+        <label class="form-label">COMPLETED:</label>
+        <select class="form-select" name="task_status" th:value="${task.isCompleted()}">
+            <option value="true" th:selected="${task.isCompleted()}" th:text="YES"></option>
+            <option value="false" th:selected="${!task.isCompleted()}" th:text="NO"></option>
+        </select>
+        <br>
+        <button class="btn btn-success" type="submit">SAVE</button>
+    </form>
+    <br>
+    <form th:action="@{'/deleteTask'}" method="post">
+        <input type="hidden" value="_method" name="DELETE">
+        <input type="hidden" th:value="${task.getId()}" name="taskId">
+        <button class="btn btn-danger" type="submit">DELETE</button>
+    </form>
+</div>
+<script type="text/javascript" src="/js/bootstrap.bundle.js"></script>
+</body>
+</html>
