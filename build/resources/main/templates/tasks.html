@@ -10,7 +10,7 @@ layout:decorate="/layouts/taskLayout.html">
 </head>
 <body>
 <div layout:fragment="thirdFragment">
-    <button class="btn btn-primary">+ Add New Task</button>
+    <a class="btn btn-primary" th:href="@{'/addTask'}">+ Add New Task</a>
 </div>
 <div layout:fragment="firstFragment">
     <div class="col-12">
